@@ -80,11 +80,19 @@ def test_median_quick_sort():
     assert sorts.quick_sort(c, 0, len(c) - 1, sorts.partition_median) == answer
 
 
-def test_counting_sort():
+def test_unstable_counting_sort():
     # test sort function
     c = [5, 3, 7, 0, 2, 4, 7, 10, 23]
     answer = [0, 2, 3, 4, 5, 7, 7, 10, 23]
-    assert sorts.counting_sort(24, c) == answer
+    assert sorts.unstable_counting_sort(24, c) == answer
+
+
+def test_stable_counting_sort():
+    # test sort function
+    c = [5, 3, 7, 1, 2, 4, 7, 9, 3]
+    answer = [1, 2, 3, 3, 4, 5, 7, 7, 9]
+
+    assert sorts.stable_counting_sort(c, max(c)) == answer
 
 
 def test_key_counting_sort():

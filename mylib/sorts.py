@@ -87,7 +87,8 @@ def merge(a_in, b_in):
     a_index = 0
     b_index = 0
     while (a_index < len(a_in)) and (b_index < len(b_in)):
-        if a_in[a_index] < b_in[b_index]:
+        # <= is for making mergesort stable
+        if a_in[a_index] <= b_in[b_index]:
             merged.append(a_in[a_index])
             a_index += 1
 
@@ -194,7 +195,7 @@ def quick_sort(data_in, left_pointer, right_pointer, partition_func):
 
 
 ############### Counting Sort
-def counting_sort(k_in, data_in):
+def unstable_counting_sort(k_in, data_in):
     holder = [[] for _ in range(k_in)]
 
     for item in data_in:
@@ -205,6 +206,21 @@ def counting_sort(k_in, data_in):
         sorted_list.extend(item)
 
     return sorted_list
+
+
+def stable_counting_sort(data_in, k_in):
+    key_in = [0 for _ in range(k_in)]
+    for item in data_in:
+        key_in[item - 1] += 1
+    for x in range(1, k_in):
+        key_in[x] += key_in[x - 1]
+
+    sorted_out = [0 for _ in range(len(data_in))]
+    for x in range(len(data_in) - 1, -1, -1):
+        sorted_out[key_in[data_in[x] - 1] - 1] = data_in[x]
+        key_in[data_in[x] - 1] -= 1
+
+    return sorted_out
 
 
 ############### Radix Sort
