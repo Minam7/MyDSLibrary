@@ -1,4 +1,4 @@
-class Queue:
+class QueueArray:
     def __init__(self, size_in):
         self.size = size_in
         self.first = 0
@@ -25,7 +25,7 @@ class Queue:
 
         return item_out
 
-    def front(self):
+    def peek(self):
         if self.item_count == 0:
             raise ValueError("There is no item in the queue.")
 

@@ -1,26 +1,27 @@
-from mylib.stack import Stack
 import pytest
+
+from mylib.stackArray import Stack_Array
 
 
 def test_is_full():
     # Test is_full
-    s = Stack(4)
+    s = Stack_Array(4)
     answer = False
     assert s.is_full() == answer
 
 
 def test_push_top():
     # Test push
-    s = Stack(4)
+    s = Stack_Array(4)
     s.push(1)
 
     # Test top
     answer = 1
-    assert s.stack_top() == answer
+    assert s.peek() == answer
 
 
 def test_stack_fuctions():
-    s = Stack(4)
+    s = Stack_Array(4)
     s.push(1)
     s.push(2)
     s.push(-1)
@@ -40,4 +41,4 @@ def test_stack_fuctions():
 
     # now top should be -1
     answer = -1
-    assert s.stack_top() == answer
+    assert s.peek() == answer

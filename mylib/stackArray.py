@@ -1,4 +1,4 @@
-class Stack:
+class Stack_Array:
     def __init__(self, size_in):
         self.size = size_in
         self.top = 0
@@ -19,7 +19,7 @@ class Stack:
         self.top -= 1
         return item_out
 
-    def stack_top(self):
+    def peek(self):
         if self.top == 0:
             raise ValueError("Empty stack")
         return self.S[self.top - 1]
@@ -29,3 +29,6 @@ class Stack:
 
     def is_full(self):
         return self.top >= self.size
+
+    def is_empty(self):
+        return self.top == 0

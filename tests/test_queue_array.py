@@ -1,26 +1,26 @@
-from mylib.queue import Queue
+from mylib.queueArray import QueueArray
 import pytest
 
 
 def test_is_empty():
     # Test is_empty
-    q = Queue(4)
+    q = QueueArray(4)
     answer = True
     assert q.is_empty() == answer
 
 
 def test_enqueue_front():
     # Test enqueue
-    q = Queue(4)
+    q = QueueArray(4)
     q.enqueue(1)
 
     # Test front
     answer = 1
-    assert q.front() == answer
+    assert q.peek() == answer
 
 
 def test_queue_fuctions():
-    q = Queue(4)
+    q = QueueArray(4)
     q.enqueue(1)
     q.enqueue(2)
     q.enqueue(-1)
@@ -39,4 +39,4 @@ def test_queue_fuctions():
 
     # now front should be 2
     answer = 2
-    assert q.front() == answer
+    assert q.peek() == answer
