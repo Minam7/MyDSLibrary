@@ -15,7 +15,7 @@ def test_single_list_insert_exception():
 
     l_list.insert_after(1, None)
 
-    assert str(l_list.start) == '1->None'
+    assert str(l_list.head) == '1->None'
 
     # should not be done
     with pytest.raises(ValueError, match='The next value you entered is not inserted in the list!'):
@@ -27,13 +27,13 @@ def test_single_list_insert():
     l_list = SingleLink()
 
     l_list.insert_after(1, None)
-    assert str(l_list.start) == '1->None'
+    assert str(l_list.head) == '1->None'
 
     l_list.insert_after(2, 1)
-    assert str(l_list.start) == '1->2->None'
+    assert str(l_list.head) == '1->2->None'
 
     l_list.insert_after(3, 2)
-    assert str(l_list.start) == '1->2->3->None'
+    assert str(l_list.head) == '1->2->3->None'
 
     l_list.insert_after(12, 1)
 
@@ -58,22 +58,22 @@ def test_single_list_delete():
     l_list = SingleLink()
 
     l_list.insert_after(1, None)
-    assert str(l_list.start) == '1->None'
+    assert str(l_list.head) == '1->None'
 
     l_list.insert_after(2, 1)
-    assert str(l_list.start) == '1->2->None'
+    assert str(l_list.head) == '1->2->None'
 
     l_list.insert_after(3, 2)
-    assert str(l_list.start) == '1->2->3->None'
+    assert str(l_list.head) == '1->2->3->None'
 
     l_list.insert_after(12, 1)
-    assert str(l_list.start) == '1->12->2->3->None'
+    assert str(l_list.head) == '1->12->2->3->None'
 
     l_list.delete(1)
-    assert str(l_list.start) == '12->2->3->None'
+    assert str(l_list.head) == '12->2->3->None'
 
     l_list.delete(2)
-    assert str(l_list.start) == '12->3->None'
+    assert str(l_list.head) == '12->3->None'
 
 
 def test_single_list_get():

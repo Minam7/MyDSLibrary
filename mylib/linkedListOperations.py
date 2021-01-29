@@ -6,10 +6,10 @@ def remove_dups(ll_in):
     if ll_in is None:
         return None
 
-    if ll_in.start is None:
+    if ll_in.head is None:
         return None
 
-    walker = ll_in.start
+    walker = ll_in.head
     seen = {walker.value: 1}
     while walker.next is not None:
         if walker.next.value in seen:
@@ -28,11 +28,11 @@ def k_to_last(ll_in, k_in):
     if ll_in is None:
         return None
 
-    if ll_in.start is None:
+    if ll_in.head is None:
         return None
 
-    end = ll_in.start
-    start = ll_in.start
+    end = ll_in.head
+    start = ll_in.head
     diff = 0
     while end.next is not None:
         end = end.next
@@ -66,11 +66,11 @@ def linked_partition(ll_in, x_in):
     if ll_in is None:
         return None
 
-    if ll_in.start is None:
+    if ll_in.head is None:
         return None
 
     partition_holder = None
-    walker = ll_in.start
+    walker = ll_in.head
     while walker is not None:
         if walker.value >= x_in and partition_holder is None:
             # set partition_holder
@@ -91,13 +91,13 @@ def sum_list_rev(ll_in1, ll_in2):
     if ll_in1 is None or ll_in2 is None:
         return None
 
-    if ll_in1.start is None or ll_in2.start is None:
+    if ll_in1.head is None or ll_in2.head is None:
         return None
 
     response = SingleLink()
     answer_walker = None
-    walker1 = ll_in1.start
-    walker2 = ll_in2.start
+    walker1 = ll_in1.head
+    walker2 = ll_in2.head
     carry = 0
     while walker1 is not None or walker2 is not None:
         one_digit_sum = 0
@@ -122,10 +122,10 @@ def sum_list_rev(ll_in1, ll_in2):
         else:
             carry = 0
 
-        if response.start is None:
+        if response.head is None:
             # first digit
-            response.start = Node(one_digit_sum, None)
-            answer_walker = response.start
+            response.head = Node(one_digit_sum, None)
+            answer_walker = response.head
         else:
             # other digit
             answer_walker.next = Node(one_digit_sum, None)
@@ -143,8 +143,8 @@ def insert_at_first(ll_in, value_in):
     if ll_in is None:
         return None
 
-    new_node = Node(value_in, ll_in.start)
-    ll_in.start = new_node
+    new_node = Node(value_in, ll_in.head)
+    ll_in.head = new_node
 
 
 def zero_pad(ll_in, length_in):
@@ -182,7 +182,7 @@ def sum_list(ll_in1, ll_in2):
     if ll_in1 is None or ll_in2 is None:
         return None
 
-    if ll_in1.start is None or ll_in2.start is None:
+    if ll_in1.head is None or ll_in2.head is None:
         return None
 
     # make the lengths the same
@@ -195,7 +195,7 @@ def sum_list(ll_in1, ll_in2):
         # zeropad ll_in1
         zero_pad(ll_in1, (-1) * length_diff)
 
-    carry, result = sum_list_helper(ll_in1.start, ll_in2.start)
+    carry, result = sum_list_helper(ll_in1.head, ll_in2.head)
 
     if carry != 0:
         insert_at_first(result, carry)
@@ -224,18 +224,18 @@ def list_palindrome(ll_in):
     if ll_in is None:
         return True
 
-    if ll_in.start is None:
+    if ll_in.head is None:
         return True
 
     ll_length = ll_in.size()
-    _, result = list_palindrome_helper(ll_in.start, ll_length)
+    _, result = list_palindrome_helper(ll_in.head, ll_length)
 
     return result
 
 
 def find_length_last(ll_in):
     # find the length of a linked list with the last node
-    walker = ll_in.start
+    walker = ll_in.head
     length_out = 0
     while walker.next is not None:
         length_out += 1
@@ -248,7 +248,7 @@ def list_intersect(ll_in1, ll_in2):
     if ll_in1 is None or ll_in2 is None:
         return None, False
 
-    if ll_in1.start is None or ll_in2.start is None:
+    if ll_in1.head is None or ll_in2.head is None:
         return None, False
 
     # finding length and last node
@@ -260,10 +260,10 @@ def list_intersect(ll_in1, ll_in2):
         return None, False
 
     # finding the intersection now
-    shorter_walker, longer_walker = ll_in1.start, ll_in2.start
+    shorter_walker, longer_walker = ll_in1.head, ll_in2.head
     length_diff = length1 - length2
     if length_diff > 0:
-        shorter_walker, longer_walker = ll_in2.start, ll_in1.start
+        shorter_walker, longer_walker = ll_in2.head, ll_in1.head
 
     # move longer walker as difference
     for i in range(length_diff):
@@ -284,21 +284,21 @@ def list_loop_detection(ll_in):
     if ll_in is None:
         return None
 
-    if ll_in.start is None:
+    if ll_in.head is None:
         return None
 
-    if ll_in.start.next is None:
+    if ll_in.head.next is None:
         return None
 
-    walker = ll_in.start
-    runner = ll_in.start
+    walker = ll_in.head
+    runner = ll_in.head
 
     while runner is not None and runner.next is not None:
         walker = walker.next
         runner = runner.next.next
         if runner == walker:
             # finding the loop
-            walker = ll_in.start
+            walker = ll_in.head
             break
 
     if runner is None or runner.next is None:
@@ -323,5 +323,5 @@ if __name__ == '__main__':
     find_node2 = l_list1.find('C')
     find_node1.next = find_node2
 
-    print(l_list1.start.value)
+    print(l_list1.head.value)
     print(list_loop_detection(l_list1).value)

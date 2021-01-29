@@ -9,11 +9,11 @@ class Node:
 
 class SingleLink:
     def __init__(self, start_in=None):
-        self.start = start_in
+        self.head = start_in
 
     def find(self, value_in):
         # find the value_in node
-        walker = self.start
+        walker = self.head
         find_node = None
         while walker is not None:
             if walker.value == value_in:
@@ -27,10 +27,10 @@ class SingleLink:
         return find_node
 
     def insert_after(self, item_in, after_in):
-        if self.start is None:
+        if self.head is None:
             # this is the first item
             new_node = Node(item_in, None)
-            self.start = new_node
+            self.head = new_node
             return
 
         # find the after_in node
@@ -45,11 +45,11 @@ class SingleLink:
         return
 
     def delete(self, item_in):
-        if self.start is None:
+        if self.head is None:
             raise ValueError('List is already empty.')
 
         # find the item_in node
-        walker = self.start
+        walker = self.head
         find_node = None
         pre_node = None
         while walker is not None:
@@ -66,7 +66,7 @@ class SingleLink:
             pre_node.next = find_node.next
         else:
             # this is also the start of the list
-            self.start = find_node.next
+            self.head = find_node.next
 
         find_node.next = None
 
@@ -75,7 +75,7 @@ class SingleLink:
     def get(self, value_in):
         count = 0
         # find the value_in node
-        walker = self.start
+        walker = self.head
         find_node = None
         while walker is not None:
             if walker.value == value_in:
@@ -90,7 +90,7 @@ class SingleLink:
 
     def size(self):
         count = 0
-        walker = self.start
+        walker = self.head
         while walker is not None:
             count += 1
             walker = walker.next
@@ -98,7 +98,7 @@ class SingleLink:
         return count
 
     def is_empty(self):
-        if self.start is None:
+        if self.head is None:
             return True
         return False
 

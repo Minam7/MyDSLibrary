@@ -21,13 +21,13 @@ class TestRemoveDuplicate(unittest.TestCase):
         l_list.insert_after(3, 2)
         l_list.insert_after(12, 1)
         remove_dups(l_list)
-        self.assertEqual(str(l_list.start), '1->12->2->3->None')
+        self.assertEqual(str(l_list.head), '1->12->2->3->None')
 
         # single case
         l_list = SingleLink()
         l_list.insert_after(1, None)
         remove_dups(l_list)
-        self.assertEqual(str(l_list.start), '1->None')
+        self.assertEqual(str(l_list.head), '1->None')
 
     def test_repetitive_case(self):
         # repetitive case
@@ -36,14 +36,14 @@ class TestRemoveDuplicate(unittest.TestCase):
         l_list.insert_after(2, 1)
         l_list.insert_after(3, 2)
         l_list.insert_after(2, 1)
-        self.assertEqual(str(l_list.start), '1->2->2->3->None')
+        self.assertEqual(str(l_list.head), '1->2->2->3->None')
         remove_dups(l_list)
-        self.assertEqual(str(l_list.start), '1->2->3->None')
+        self.assertEqual(str(l_list.head), '1->2->3->None')
 
     def test_empty_case(self):
         l_list = SingleLink()
         remove_dups(l_list)
-        self.assertEqual(l_list.start, None)
+        self.assertEqual(l_list.head, None)
 
     def test_none_case(self):
         # none case
@@ -55,18 +55,18 @@ class TestRemoveDuplicate(unittest.TestCase):
         # one element
         l_list = SingleLink()
         l_list.insert_after(1, None)
-        self.assertEqual(str(l_list.start), '1->None')
+        self.assertEqual(str(l_list.head), '1->None')
         remove_dups(l_list)
-        self.assertEqual(str(l_list.start), '1->None')
+        self.assertEqual(str(l_list.head), '1->None')
 
         # all same
         l_list = SingleLink()
         l_list.insert_after(1, None)
         l_list.insert_after(1, 1)
         l_list.insert_after(1, 1)
-        self.assertEqual(str(l_list.start), '1->1->1->None')
+        self.assertEqual(str(l_list.head), '1->1->1->None')
         remove_dups(l_list)
-        self.assertEqual(str(l_list.start), '1->None')
+        self.assertEqual(str(l_list.head), '1->None')
 
 
 class TestKthFromLast(unittest.TestCase):
@@ -78,11 +78,11 @@ class TestKthFromLast(unittest.TestCase):
         l_list.insert_after(3, 2)
         l_list.insert_after(6, 3)
         l_list.insert_after(4, 6)
-        self.assertEqual(str(k_to_last(l_list, k_in=4)), str(l_list.start))
+        self.assertEqual(str(k_to_last(l_list, k_in=4)), str(l_list.head))
 
         # more than k length
         l_list.insert_after(5, 4)
-        self.assertEqual(str(k_to_last(l_list, k_in=4)), str(l_list.start.next))
+        self.assertEqual(str(k_to_last(l_list, k_in=4)), str(l_list.head.next))
 
         # less than k length
         self.assertEqual(k_to_last(l_list, k_in=10), None)
@@ -131,11 +131,11 @@ class TestDeleteMiddleNode(unittest.TestCase):
         l_list.insert_after(6, 3)
         l_list.insert_after(4, 6)
         delete_middle_node(l_list.find(6))
-        self.assertEqual(str(l_list.start), '1->2->3->4->None')
+        self.assertEqual(str(l_list.head), '1->2->3->4->None')
         delete_middle_node(l_list.find(2))
-        self.assertEqual(str(l_list.start), '1->3->4->None')
+        self.assertEqual(str(l_list.head), '1->3->4->None')
         delete_middle_node(l_list.find(3))
-        self.assertEqual(str(l_list.start), '1->4->None')
+        self.assertEqual(str(l_list.head), '1->4->None')
 
     def test_none_case(self):
         # none case
@@ -166,7 +166,7 @@ class TestLinkedPartition(unittest.TestCase):
         l_list.insert_after(2, 10)
         l_list.insert_after(1, 2)
         linked_partition(l_list, x_in=5)
-        self.assertEqual(str(l_list.start), '3->2->1->6->10->5->8->None')
+        self.assertEqual(str(l_list.head), '3->2->1->6->10->5->8->None')
 
         # non present
         l_list = SingleLink()
@@ -178,7 +178,7 @@ class TestLinkedPartition(unittest.TestCase):
         l_list.insert_after(2, 10)
         l_list.insert_after(1, 2)
         linked_partition(l_list, x_in=9)
-        self.assertEqual(str(l_list.start), '3->5->8->6->2->1->10->None')
+        self.assertEqual(str(l_list.head), '3->5->8->6->2->1->10->None')
 
         # other case
         l_list = SingleLink()
@@ -190,12 +190,12 @@ class TestLinkedPartition(unittest.TestCase):
         l_list.insert_after(2, 10)
         l_list.insert_after(1, 2)
         linked_partition(l_list, x_in=10)
-        self.assertEqual(str(l_list.start), '3->5->8->6->2->1->10->None')
+        self.assertEqual(str(l_list.head), '3->5->8->6->2->1->10->None')
 
     def test_empty_case(self):
         l_list = SingleLink()
         linked_partition(l_list, x_in=10)
-        self.assertEqual(l_list.start, None)
+        self.assertEqual(l_list.head, None)
 
     def test_none_case(self):
         # none case
@@ -214,11 +214,11 @@ class TestLinkedPartition(unittest.TestCase):
         l_list.insert_after(2, 10)
         l_list.insert_after(1, 2)
         linked_partition(l_list, x_in=15)
-        self.assertEqual(str(l_list.start), '3->5->8->6->10->2->1->None')
+        self.assertEqual(str(l_list.head), '3->5->8->6->10->2->1->None')
 
         # no change for small x
         linked_partition(l_list, x_in=0)
-        self.assertEqual(str(l_list.start), '3->5->8->6->10->2->1->None')
+        self.assertEqual(str(l_list.head), '3->5->8->6->10->2->1->None')
 
 
 class TestSumListRev(unittest.TestCase):
@@ -232,7 +232,7 @@ class TestSumListRev(unittest.TestCase):
         l_list2.insert_after(5, None)
         l_list2.insert_after(9, 5)
         l_list2.insert_after(2, 9)
-        self.assertEqual(str(sum_list_rev(l_list1, l_list2).start), '2->1->9->None')
+        self.assertEqual(str(sum_list_rev(l_list1, l_list2).head), '2->1->9->None')
 
     def test_last_carry(self):
         # test last carry
@@ -244,7 +244,7 @@ class TestSumListRev(unittest.TestCase):
         l_list2.insert_after(6, None)
         l_list2.insert_after(8, 6)
         l_list2.insert_after(5, 8)
-        self.assertEqual(str(sum_list_rev(l_list1, l_list2).start), '5->6->4->1->None')
+        self.assertEqual(str(sum_list_rev(l_list1, l_list2).head), '5->6->4->1->None')
 
     def test_different_size(self):
         # different size first larger
@@ -258,7 +258,7 @@ class TestSumListRev(unittest.TestCase):
         l_list2.insert_after(5, None)
         l_list2.insert_after(9, 5)
         l_list2.insert_after(2, 9)
-        self.assertEqual(str(sum_list_rev(l_list1, l_list2).start), '2->1->9->3->None')
+        self.assertEqual(str(sum_list_rev(l_list1, l_list2).head), '2->1->9->3->None')
 
         # different size second larger
         l_list1 = SingleLink()
@@ -272,7 +272,7 @@ class TestSumListRev(unittest.TestCase):
         l_list2.insert_after(2, 9)
         l_list2.insert_after(3, 2)
         l_list2.insert_after(7, 3)
-        self.assertEqual(str(sum_list_rev(l_list1, l_list2).start), '2->1->9->3->7->None')
+        self.assertEqual(str(sum_list_rev(l_list1, l_list2).head), '2->1->9->3->7->None')
 
     def test_none_case(self):
         # none
@@ -292,7 +292,7 @@ class TestSumList(unittest.TestCase):
         l_list2.insert_after(2, None)
         l_list2.insert_after(9, 2)
         l_list2.insert_after(5, 9)
-        self.assertEqual(str(sum_list(l_list1, l_list2).start), '9->1->2->None')
+        self.assertEqual(str(sum_list(l_list1, l_list2).head), '9->1->2->None')
 
     def test_last_carry(self):
         # test last carry
@@ -304,7 +304,7 @@ class TestSumList(unittest.TestCase):
         l_list2.insert_after(5, None)
         l_list2.insert_after(8, 5)
         l_list2.insert_after(6, 8)
-        self.assertEqual(str(sum_list(l_list1, l_list2).start), '1->4->6->5->None')
+        self.assertEqual(str(sum_list(l_list1, l_list2).head), '1->4->6->5->None')
 
     def test_different_size(self):
         # different size first larger
@@ -318,7 +318,7 @@ class TestSumList(unittest.TestCase):
         l_list2.insert_after(5, None)
         l_list2.insert_after(9, 5)
         l_list2.insert_after(2, 9)
-        self.assertEqual(str(sum_list(l_list1, l_list2).start), '7->7->5->5->None')
+        self.assertEqual(str(sum_list(l_list1, l_list2).head), '7->7->5->5->None')
 
         # different size second larger
         l_list1 = SingleLink()
@@ -332,7 +332,7 @@ class TestSumList(unittest.TestCase):
         l_list2.insert_after(2, 9)
         l_list2.insert_after(3, 2)
         l_list2.insert_after(7, 3)
-        self.assertEqual(str(sum_list(l_list1, l_list2).start), '5->9->9->5->3->None')
+        self.assertEqual(str(sum_list(l_list1, l_list2).head), '5->9->9->5->3->None')
 
     def test_none_case(self):
         # none
@@ -543,7 +543,7 @@ class TestIntersectionList(unittest.TestCase):
 
         answer = list_intersect(l_list1, l_list1)
         # none
-        self.assertEqual(l_list1.start, answer[0])
+        self.assertEqual(l_list1.head, answer[0])
         self.assertTrue(answer[1])
 
     def test_same_value(self):
