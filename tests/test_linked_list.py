@@ -36,7 +36,6 @@ def test_single_list_insert():
     assert str(l_list.start) == '1->2->3->None'
 
     l_list.insert_after(12, 1)
-    assert str(l_list.start) == '1->12->2->3->None'
 
 
 def test_single_list_find():

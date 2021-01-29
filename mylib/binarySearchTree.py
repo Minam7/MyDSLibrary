@@ -144,7 +144,7 @@ class BinarySearchTree:
         return
 
     def in_order_traversal(self, node_in):
-        sorted_list = list()
+        sorted_list = []
         # look at left child, then self, then right child
         if node_in is None:
             return sorted_list

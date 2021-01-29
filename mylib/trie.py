@@ -1,5 +1,5 @@
 def create_empty_alphabet_dictionary():
-    dict_out = dict()
+    dict_out = {}
     for i in range(ord('a'), ord('z') + 1):
         dict_out[chr(i)] = None
     return dict_out

@@ -68,7 +68,7 @@ def binary_insertion_sort(data_in):
 
 ############### Merge Sort
 def merge(a_in, b_in):
-    merged = list()
+    merged = []
 
     if len(a_in) == 0:
         return b_in
@@ -201,7 +201,7 @@ def unstable_counting_sort(k_in, data_in):
     for item in data_in:
         holder[item].append(item)
 
-    sorted_list = list()
+    sorted_list = []
     for item in holder:
         sorted_list.extend(item)
 
@@ -230,7 +230,7 @@ def key_counting_sort(key_in, data_in):
     for i in range(len(data_in)):
         holder[key_in[i]].append(data_in[i])
 
-    sorted_list = list()
+    sorted_list = []
     for item in holder:
         sorted_list.extend(item)
 
@@ -249,7 +249,7 @@ def radix_sort(array_in):
     d = len(convert(10, max(array_in)))
 
     for k in range(d):
-        keys = list()
+        keys = []
 
         for j in range(len(array_in)):
             keys.append((array_in[j] // (10 ** k)) % 10)
