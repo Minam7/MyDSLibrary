@@ -1,11 +1,11 @@
 class Stack_Array:
     def __init__(self, size_in):
-        self.size = size_in
+        self.limit = size_in
         self.top = 0
         self.S = [None] * size_in
 
     def push(self, item_in):
-        if self.top >= self.size:
+        if self.top >= self.limit:
             raise ValueError("Stack overflow, try deleting an item first!")
 
         self.S[self.top] = item_in
@@ -24,11 +24,11 @@ class Stack_Array:
             raise ValueError("Empty stack")
         return self.S[self.top - 1]
 
-    def stack_size(self):
+    def size(self):
         return self.top
 
     def is_full(self):
-        return self.top >= self.size
+        return self.top >= self.limit
 
     def is_empty(self):
         return self.top == 0
