@@ -44,7 +44,7 @@ def test_trie_functins():
     # insert already existing string
     t.insert('a')
     answer = None
-    assert t.root.children['a'].children['a'] == answer
+    assert t.root.children['a'].children.get('a') == answer
 
     answer = True
     assert t.find('a') == answer
