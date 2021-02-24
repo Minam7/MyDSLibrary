@@ -27,3 +27,15 @@ import sys
 
 !{sys.executable} -m pip install /Users/mina/Desktop/Mina/Edu/Learning/MyLibrary/dist/mylib-0.1.0-py3-none-any.whl
 ```
+
+### How to test print function
+
+```python
+import unittest.mock
+import io
+
+@unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
+def test_normal(self, mock_stdout):
+    print('Chicken dinner!')
+    self.assertEqual(mock_stdout.getvalue(), 'Chicken dinner!')
+```
