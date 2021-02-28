@@ -1,6 +1,6 @@
 import heapq
 
-from shortestPathDag import GraphWeighted, ShortestPathResult
+from mylib.shortestPathDag import GraphWeighted, ShortestPathResult
 
 
 def dijkstra(graph_in, source_in):
