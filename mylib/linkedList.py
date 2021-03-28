@@ -44,6 +44,21 @@ class SingleLink:
 
         return
 
+    def insert_after_node(self, item_in, after_in):
+        if self.head is None:
+            # this is the first item
+            new_node = Node(item_in, None)
+            self.head = new_node
+            return
+
+        if after_in is None:
+            raise ValueError('Cannot append new node to None node!')
+
+        new_node = Node(item_in, after_in.next)
+        after_in.next = new_node
+
+        return
+
     def delete(self, item_in):
         if self.head is None:
             raise ValueError('List is already empty.')

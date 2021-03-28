@@ -38,6 +38,17 @@ def test_single_list_insert():
     l_list.insert_after(12, 1)
 
 
+def test_single_list_node_insert():
+    # Test insert
+    l_list = SingleLink()
+
+    l_list.insert_after(1, None)
+    l_list.insert_after(2, 1)
+
+    last_node = l_list.find(2)
+    l_list.insert_after_node(3, last_node)
+    assert str(l_list.head) == '1->2->3->None'
+
 def test_single_list_find():
     # Test find
     l_list = SingleLink()
