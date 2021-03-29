@@ -9,8 +9,8 @@ class TestInOrder(unittest.TestCase):
         a = Node(2)
         b = Node(1, a)
         c = Node(3, a)
-        a.left = b
-        a.right = c
+        a.left_child = b
+        a.right_child = c
 
         self.assertEqual(answer, in_order_traversal(a))
 
@@ -20,19 +20,19 @@ class TestInOrder(unittest.TestCase):
         a = Node(4)
         b = Node(2, a)
         c = Node(6, a)
-        a.left = b
-        a.right = c
+        a.left_child = b
+        a.right_child = c
 
         # h=2
         d = Node(1, b)
         e = Node(3, b)
-        b.left = d
-        b.right = e
+        b.left_child = d
+        b.right_child = e
 
         f = Node(5, c)
         g = Node(7, c)
-        c.left = f
-        c.right = g
+        c.left_child = f
+        c.right_child = g
 
         self.assertEqual(answer, in_order_traversal(a))
 
@@ -49,14 +49,14 @@ class TestInOrder(unittest.TestCase):
         answer = [1, 2]
         a = Node(2)
         b = Node(1, a)
-        a.left = b
+        a.left_child = b
         self.assertEqual(answer, in_order_traversal(a))
 
         # right
         answer = [2, 3]
         a = Node(2)
         c = Node(3, a)
-        a.right = c
+        a.right_child = c
         self.assertEqual(answer, in_order_traversal(a))
 
 
@@ -66,8 +66,8 @@ class TestPreOrder(unittest.TestCase):
         a = Node(1)
         b = Node(2, a)
         c = Node(3, a)
-        a.left = b
-        a.right = c
+        a.left_child = b
+        a.right_child = c
 
         self.assertEqual(answer, pre_order_traversal(a))
 
@@ -77,19 +77,19 @@ class TestPreOrder(unittest.TestCase):
         a = Node(4)
         b = Node(2, a)
         c = Node(6, a)
-        a.left = b
-        a.right = c
+        a.left_child = b
+        a.right_child = c
 
         # h=2
         d = Node(1, b)
         e = Node(3, b)
-        b.left = d
-        b.right = e
+        b.left_child = d
+        b.right_child = e
 
         f = Node(5, c)
         g = Node(7, c)
-        c.left = f
-        c.right = g
+        c.left_child = f
+        c.right_child = g
 
         self.assertEqual(answer, pre_order_traversal(a))
 
@@ -106,14 +106,14 @@ class TestPreOrder(unittest.TestCase):
         answer = [1, 2]
         a = Node(1)
         b = Node(2, a)
-        a.left = b
+        a.left_child = b
         self.assertEqual(answer, pre_order_traversal(a))
 
         # right
         answer = [2, 3]
         a = Node(2)
         c = Node(3, a)
-        a.right = c
+        a.right_child = c
         self.assertEqual(answer, pre_order_traversal(a))
 
 
@@ -123,8 +123,8 @@ class TestPostOrder(unittest.TestCase):
         a = Node(1)
         b = Node(2, a)
         c = Node(3, a)
-        a.left = b
-        a.right = c
+        a.left_child = b
+        a.right_child = c
 
         self.assertEqual(answer, post_order_traversal(a))
 
@@ -134,19 +134,19 @@ class TestPostOrder(unittest.TestCase):
         a = Node(4)
         b = Node(2, a)
         c = Node(6, a)
-        a.left = b
-        a.right = c
+        a.left_child = b
+        a.right_child = c
 
         # h=2
         d = Node(1, b)
         e = Node(3, b)
-        b.left = d
-        b.right = e
+        b.left_child = d
+        b.right_child = e
 
         f = Node(5, c)
         g = Node(7, c)
-        c.left = f
-        c.right = g
+        c.left_child = f
+        c.right_child = g
 
         self.assertEqual(answer, post_order_traversal(a))
 
@@ -163,12 +163,12 @@ class TestPostOrder(unittest.TestCase):
         answer = [2, 1]
         a = Node(1)
         b = Node(2, a)
-        a.left = b
+        a.left_child = b
         self.assertEqual(answer, post_order_traversal(a))
 
         # right
         answer = [3, 2]
         a = Node(2)
         c = Node(3, a)
-        a.right = c
+        a.right_child = c
         self.assertEqual(answer, post_order_traversal(a))
